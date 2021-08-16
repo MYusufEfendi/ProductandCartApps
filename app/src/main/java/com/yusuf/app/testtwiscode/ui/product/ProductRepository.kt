@@ -20,8 +20,12 @@ class ProductRepository @Inject constructor(
         return api.getAll()
     }
 
-    fun getProduct(categoryId:String = ""): Flow<List<ProductTable>> {
-        return productDao.getAll(categoryId)
+    fun getProduct(categoryId:String = "",orderby:String ): Flow<List<ProductTable>> {
+        if(orderby == "asc"){
+            return productDao.getAll(categoryId)
+        }else{
+            return productDao.getAlldesc(categoryId)
+        }
     }
 
     suspend fun insertProduct(products: ProductTable){

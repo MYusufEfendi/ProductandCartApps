@@ -4,14 +4,15 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.yusuf.app.testtwiscode.databinding.FilterListItemBinding
 import com.yusuf.app.testtwiscode.model.ShortBytable
 
-class ShortByFilterAdapter(private val listener: ShotByListener) :
+class ShortByFilterAdapter(private val listener: ShotByListener,private val bottomSheetDialog: BottomSheetDialog) :
     RecyclerView.Adapter<ShortByViewHolder>() {
 
     interface ShotByListener {
-        fun onClickedShortBy(data: ShortBytable, qty: Int)
+        fun onClickedShortBy(data: ShortBytable)
     }
 
     private val items = ArrayList<ShortBytable>()
@@ -25,7 +26,7 @@ class ShortByFilterAdapter(private val listener: ShotByListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShortByViewHolder {
         val binding: FilterListItemBinding =
             FilterListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ShortByViewHolder(binding, listener)
+        return ShortByViewHolder(binding, listener,bottomSheetDialog)
     }
 
     override fun getItemCount(): Int = items.size
@@ -36,7 +37,8 @@ class ShortByFilterAdapter(private val listener: ShotByListener) :
 
 class ShortByViewHolder(
     private val itemBinding: FilterListItemBinding,
-    private val listener: ShortByFilterAdapter.ShotByListener
+    private val listener: ShortByFilterAdapter.ShotByListener,
+    private val bottomSheetDialog: BottomSheetDialog
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
     private lateinit var data: ShortBytable
@@ -50,7 +52,8 @@ class ShortByViewHolder(
         itemBinding.radio.text = data.name
 
         itemBinding.radio.setOnClickListener {
-
+            bottomSheetDialog.dismiss()
+            listener.onClickedShortBy(data)
         }
 
     }

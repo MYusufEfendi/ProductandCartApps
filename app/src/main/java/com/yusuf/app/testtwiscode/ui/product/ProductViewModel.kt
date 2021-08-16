@@ -24,10 +24,10 @@ class ProductViewModel @ViewModelInject constructor(
     val errorMessage by lazy { MutableLiveData<String>("") }
     var letsLoad:Boolean = true
 
-    fun loadProduct(categoryId:String = ""): Flow<List<ProductTable>> {
+    fun loadProduct(categoryId:String = "",shortBy:String ): Flow<List<ProductTable>> {
         if (letsLoad)
         fetchProduct()
-        return repository.getProduct(categoryId)
+        return repository.getProduct(categoryId,shortBy)
     }
 
     fun fetchProduct() = viewModelScope.launch {
@@ -66,14 +66,14 @@ class ProductViewModel @ViewModelInject constructor(
             shortby.add(
                 ShortBytable(
                     id= 1,
-                    name = "cheapest",
+                    name = "Termurah",
                     is_selected = false,
                 ),
             )
             shortby.add(
                 ShortBytable(
                     id= 2,
-                    name = "most expensive",
+                    name = "Termahal",
                     is_selected = false,
                 )
             )

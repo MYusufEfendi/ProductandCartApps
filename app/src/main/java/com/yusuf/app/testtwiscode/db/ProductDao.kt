@@ -12,8 +12,11 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(products: ProductTable)
 
-    @Query("SELECT * FROM productTable where category_id LIKE '%' || :categoryId || '%'")
-    fun getAll(categoryId:String = ""): Flow<List<ProductTable>>
+    @Query("SELECT * FROM productTable where category_id LIKE '%' || :categoryId || '%' order by price asc ")
+    fun getAll(categoryId:String = "" ): Flow<List<ProductTable>>
+
+    @Query("SELECT * FROM productTable where category_id LIKE '%' || :categoryId || '%' order by price desc ")
+    fun getAlldesc(categoryId:String = "" ): Flow<List<ProductTable>>
 
     @Query("SELECT count(*) FROM productTable  ")
     suspend fun countBalance(): Int

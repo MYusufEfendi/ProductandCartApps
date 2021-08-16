@@ -3,6 +3,7 @@ package com.yusuf.app.testtwiscode.ui.product
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.style.TtsSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,9 +81,10 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
         }
     }
 
-    private fun setupObservers(categoryId:String = "") {
+    private fun setupObservers(categoryId:String = "",shortby:String = "asc") {
+        Timber.e("shortby $shortby")
         lifecycleScope.launch {
-            viewModel.loadProduct(categoryId).collectLatest {
+            viewModel.loadProduct(categoryId,shortby).collectLatest {
                 try {
                     val data = it
                     if (!data.isNullOrEmpty()) productAdapter.setItems(ArrayList(data))
@@ -129,7 +131,7 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
         val bindingDialog by lazy { BottomSeetFilterBinding.inflate(layoutInflater) }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val view = bindingDialog.root
-        categoryAdapter = CategoryFilterAdapter(this)
+        categoryAdapter = CategoryFilterAdapter(this,dialog)
         lifecycleScope.launch {
             val data = viewModel.getCategory()
             categoryAdapter.setItems(ArrayList(data))
@@ -149,7 +151,7 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
         val bindingDialog by lazy { BottomSeetFilterBinding.inflate(layoutInflater) }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val view = bindingDialog.root
-        shortbyAdapter = ShortByFilterAdapter(this)
+        shortbyAdapter = ShortByFilterAdapter(this,dialog)
         lifecycleScope.launch {
             val data = viewModel.getShortBy()
             shortbyAdapter.setItems(ArrayList(data))
@@ -161,9 +163,19 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
         }
         dialog.setContentView(view)
         dialog.show()
-
     }
-
-    override fun onClickedCategory(data: CategoryTable) {}
-    override fun onClickedShortBy(data: ShortBytable, qty: Int) {}
+    override fun onClickedCategory(data: CategoryTable) {
+        viewModel.letsLoad = false
+        setupObservers(data.id_cat)
+    }
+    override fun onClickedShortBy(data: ShortBytable) {
+        viewModel.letsLoad = false
+        var shortby = ""
+        if(data.id == 1){
+            shortby = "asc"
+        }else{
+            shortby = "desc"
+        }
+        setupObservers(shortby = shortby )
+    }
 }
