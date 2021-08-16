@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="item"
+            type="com.yusuf.app.testtwiscode.model.TransactionWithProduct" />
+
+        <variable
+            name="stringUtil"
+            type="com.yusuf.app.testtwiscode.utils.StringUtil" />
+
+        <variable
+            name="weightKg"
+            type="String" />
+
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="20dp"
+        android:elevation="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yusuf.app.testtwiscode.utils.SquareImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/default_img"
+                android:layout_marginVertical="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="@{item.product.title}"
+                tools:text="Jus alpukat 1 liter"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img"
+                app:layout_constraintTop_toTopOf="@+id/img" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Rp 10.000"
+                android:text='@{"Rp "+ stringUtil.formatCurrency(item.product.price)}'
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@android:color/holo_orange_dark"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="(baru)"
+                android:text='@{"("+item.product.condition+")"}'
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintStart_toStartOf="@+id/price"
+                app:layout_constraintTop_toBottomOf="@+id/price" />
+
+            <ImageView
+                android:id="@+id/btn_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.65"
+                app:srcCompat="@drawable/ic_plus" />
+
+            <ImageView
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/qty"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.65"
+                app:srcCompat="@drawable/ic_minus" />
+
+            <TextView
+                android:id="@+id/qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_4sdp"
+                tools:text="3"
+                android:text="@{Integer.toString(item.cart.qty)}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+                app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                tools:text="1.0 kg"
+                android:text='@{weightKg+" kg"}'
+                app:layout_constraintEnd_toEndOf="@+id/btn_plus"
+                app:layout_constraintStart_toStartOf="@+id/btn_minus"
+                app:layout_constraintTop_toBottomOf="@+id/qty" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
