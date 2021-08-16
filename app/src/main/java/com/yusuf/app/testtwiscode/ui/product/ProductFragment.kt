@@ -124,7 +124,6 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
 
         }
     }
-    git remote add origin https://gitlab.com/yusuf4587/test-twiscode.git
 
     fun bottomSheetCategory(){
         val dialog = BottomSheetDialog(requireContext())
