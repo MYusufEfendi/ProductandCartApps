@@ -121,7 +121,6 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
             } catch (e: java.lang.Exception) {
                 Timber.e("onclick error $e")
             }
-
         }
     }
 
