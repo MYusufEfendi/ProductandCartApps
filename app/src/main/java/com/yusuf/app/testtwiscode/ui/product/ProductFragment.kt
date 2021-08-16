@@ -123,6 +123,8 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
             }
 
         }
+
+
     }
 
 
