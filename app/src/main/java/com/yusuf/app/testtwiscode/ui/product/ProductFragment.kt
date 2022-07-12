@@ -141,6 +141,7 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
             layoutManager = LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)
             adapter = categoryAdapter
         }
+
         dialog.setContentView(view)
         dialog.show()
 
