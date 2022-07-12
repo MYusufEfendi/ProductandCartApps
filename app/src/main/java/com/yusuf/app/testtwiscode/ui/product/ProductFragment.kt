@@ -118,7 +118,7 @@ class ProductFragment : BaseFragment(), ProductAdapter.ProductItemListener, Cate
                 }else{
                     viewModel.cartRepository.updateFromHomepage(qty,product.id)
                 }
-                Toast.makeText(requireContext(), "dimasukkan ke keranjang", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "added to cart ", Toast.LENGTH_SHORT)
                     .show()
             } catch (e: java.lang.Exception) {
                 Timber.e("onclick error $e")

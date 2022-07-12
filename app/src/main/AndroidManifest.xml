@@ -15,6 +15,7 @@
         android:theme="@style/Theme.TestTwiscode">
         <activity
             android:name="com.yusuf.app.testtwiscode.ui.MainActivity"
+            android:theme="@style/LoginTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

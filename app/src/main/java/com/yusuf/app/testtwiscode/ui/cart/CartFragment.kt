@@ -70,7 +70,7 @@ class CartFragment : BaseFragment(), CartAdapter.btnListener {
 
             try {
                 viewModel.countPriceTotal().collectLatest {
-                    binding.priceTotal = "Rp " + viewModel.stringUtil.formatCurrency(it)
+                    binding.priceTotal = "Php. " + viewModel.stringUtil.formatCurrency(it)
                 }
             } catch (e: Exception) {
                 Timber.e("count price error $e")

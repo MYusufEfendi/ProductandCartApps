@@ -59,8 +59,8 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Rp 10.000"
-                android:text='@{"Rp "+ stringUtil.formatCurrency(item.product.price)}'
+                tools:text="Php. 10.000"
+                android:text='@{"Php. "+ stringUtil.formatCurrency(item.product.price)}'
                 android:textSize="@dimen/_11sdp"
                 android:textColor="@android:color/holo_orange_dark"
                 android:layout_marginTop="@dimen/_4sdp"

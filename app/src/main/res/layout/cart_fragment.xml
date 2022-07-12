@@ -17,19 +17,17 @@
         android:layout_height="match_parent">
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cart_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="@dimen/_6sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/cart_item"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cart_item" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -69,7 +67,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Total Harga"
+                    android:text="Total Price"
                     android:textStyle="bold"
                     android:textSize="@dimen/_12sdp"
                     app:layout_constraintBottom_toTopOf="@+id/txt_total_harga"
@@ -82,7 +80,7 @@
                     android:id="@+id/txt_total_harga"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    tools:text="Rp 20.000"
+                    tools:text="Php. 20.000"
                     android:textColor="@android:color/holo_orange_dark"
                     android:textStyle="bold"
                     android:layout_marginTop="@dimen/_2sdp"

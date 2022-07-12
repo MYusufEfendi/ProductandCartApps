@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <style name="ToolbarTheme" parent="ThemeOverlay.MaterialComponents.ActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
@@ -32,5 +34,52 @@
         <item name="cornerSizeTopLeft">@dimen/_20sdp</item>
 
     </style>
+
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+<!--        <item name="colorPrimary">@android:color/white</item>-->
+<!--        <item name="colorPrimaryDark">@android:color/transparent</item>-->
+<!--        <item name="colorAccent">@color/red</item>-->
+
+<!--        <item name="fontFamily">@font/lato</item>-->
+<!--        <item name="android:fontFamily">@font/lato</item>-->
+<!--        <item name="android:textAppearance">@style/AppFont</item>-->
+<!--        <item name="android:textViewStyle">@style/AppFont</item>-->
+<!--        <item name="android:editTextStyle">@style/AppFont.EditText</item>-->
+<!--        <item name="editTextStyle">@style/AppFont.EditText</item>-->
+<!--        <item name="materialButtonStyle">@style/AppFont.Button</item>-->
+<!--        <item name="buttonStyle">@style/AppFont.Button</item>-->
+<!--        <item name="android:itemTextAppearance">@style/AppMenuFont</item>-->
+<!--        <item name="actionMenuTextAppearance">@style/AppToolbarMenuItem</item>-->
+
+<!--        <item name="colorControlActivated">@color/colorPrimary</item>-->
+<!--        <item name="android:colorControlActivated">@color/colorPrimary</item>-->
+
+        <item name="android:actionMenuTextColor">@color/teal_200</item>
+<!--        <item name="actionMenuTextColor">@color/colorPrimary</item>-->
+
+<!--        <item name="actionBarStyle">@style/AppToolbar</item>-->
+        <item name="android:actionBarStyle">@style/ToolbarTheme</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+<!--    <style name="AppFont.EditText" parent="Widget.AppCompat.EditText">-->
+<!--        <item name="android:background">@android:color/transparent</item>-->
+<!--        <item name="fontFamily">@font/lato</item>-->
+<!--        <item name="android:fontFamily">@font/lato</item>-->
+<!--        <item name="android:textCursorDrawable">@null</item>-->
+<!--        <item name="colorControlActivated">@color/colorPrimary</item>-->
+<!--    </style>-->
+
+
+
+
+    <style name="LoginTheme" parent="AppTheme">
+<!--        <item name="android:windowBackground">@drawable/splash_drawable</item>-->
+    </style>
+
 
 </resources>

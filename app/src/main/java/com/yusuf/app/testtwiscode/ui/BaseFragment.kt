@@ -11,8 +11,8 @@ import timber.log.Timber
 open class BaseFragment : Fragment(){
     var loadingDialog: ProgressDialog? = null
     fun loading(
-        title: String = "Mohon tunggu",
-        msg: String = "Sedang memproses ...",
+        title: String = "Please wait",
+        msg: String = "Processing ...",
         indeterminate: Boolean = true
     ) {
         loadingDialog?.dismiss()
